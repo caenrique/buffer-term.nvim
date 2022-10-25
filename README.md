@@ -64,9 +64,9 @@ If you don't want any configuration applied set `configure_terminal = false` in 
 This is a personal project. I created it to use it myself and to fulfill my needs.
 Feel free to add issues or pull requests about bugfixes, but I won't add any features that I don't see myself using.
 
-- [ ] add docs
-- [ ] statusline integration
-- [ ] keepjumps (not available for lua functions yet!)
+- [ ] keepjumps (not available for lua functions yet!) [#1](https://github.com/caenrique/buffer-term.nvim/issues/1)
+- [ ] add docs [#2](https://github.com/caenrique/buffer-term.nvim/issues/2)
+- [ ] statusline integration [#3](https://github.com/caenrique/buffer-term.nvim/issues/3)
 
 ## Non goals
 
