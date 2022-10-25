@@ -6,7 +6,7 @@ Manage terminal buffers and toggle them easily!
 
 - Create/toggle terminal buffers with `require('buffer-term').toggle(<id>)` where `<id>` can be anything that's a valid lua table key
 - Toggle the last used terminal with `require('buffer-term').toggle_last()`
-- Default configiguration for the terminal. see [](#terminal-defaults)
+- Default configiguration for the terminal. see [Terminal default options](#terminal-defaults)
 
 ## Setup
 
