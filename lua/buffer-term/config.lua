@@ -2,9 +2,11 @@ local M = {}
 
 local function defaults()
   return {
-    start_insert = true,
-    buf_listed = false,
-    no_numbers = true,
+    terminal_options = {
+      start_insert = true,
+      buf_listed = false,
+      no_numbers = true,
+    },
   }
 end
 
