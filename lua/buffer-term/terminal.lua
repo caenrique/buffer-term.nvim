@@ -1,31 +1,27 @@
 M = {}
 
+local config = require('buffer-term.config')
+
 M.instances = {}
 M.index = {}
 M.last = nil
 
-function M.hide_if_is_terminal()
-  local buffer = vim.api.nvim_win_get_buf(0)
-  local term_id = M.lookup(buffer)
-  if M.instances[term_id] then
-    M.instances[term_id].visible = false
-  end
-end
-
 function M.new_terminal(term_id)
   local origin_buffer = M.get_origin_buffer()
-
-  M.hide_if_is_terminal()
 
   vim.cmd.terminal()
 
   local buffer = vim.api.nvim_win_get_buf(0)
 
+  vim.bo[buffer].modified = false
+  vim.bo[buffer].buflisted = config.terminal_options.buf_listed
+  vim.bo[buffer].bufhidden = 'hide'
+
+  vim.api.nvim_win_set_buf(0, origin_buffer)
+
   local term = {
-    visible = true,
     origin_buffer = origin_buffer,
     terminal_buffer = buffer,
-    -- channel = channel,
   }
 
   M.instances[term_id] = term
@@ -54,7 +50,6 @@ function M.lookup(buffer)
 end
 
 function M.hide(term_id)
-  M.instances[term_id].visible = false
   local t = M.get(term_id)
 
   if t.terminal_buffer == t.origin_buffer then
@@ -65,8 +60,6 @@ function M.hide(term_id)
 end
 
 function M.show(term_id)
-  M.hide_if_is_terminal()
-  M.instances[term_id].visible = true
   M.instances[term_id].origin_buffer = M.get_origin_buffer()
   vim.api.nvim_win_set_buf(0, M.get(term_id).terminal_buffer)
 end
