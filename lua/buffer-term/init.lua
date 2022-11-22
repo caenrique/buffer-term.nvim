@@ -26,17 +26,17 @@ function M.toggle(term_id)
     -- YES:
     if current_buf == term.terminal_buffer then -- is the same as term_id?
       -- YES: Hide it and restore window options
-      term:hide(state)
+      term:hide()
       window.restore_options()
     else
       -- NO: Show it
-      term:show(state)
+      term:show()
       window.configure_terminal()
     end
   else
     -- NO: save window options and Show it
     window.save_options()
-    term:show(state)
+    term:show()
     window.configure_terminal()
   end
 end
