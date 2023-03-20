@@ -11,7 +11,6 @@ end
 local this = State.default()
 
 function State.set(term)
-  vim.pretty_print(term)
   this.id[term.id] = term
   this.buffer[term.terminal_buffer] = term
 end
